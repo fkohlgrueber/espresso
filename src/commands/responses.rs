@@ -32,7 +32,7 @@ impl<L: heapless::ArrayLength<u8>> AtatResp for StringResponse<L> {}
 impl AtatResp for types::WifiMode {}
 
 /// AP join result.
-#[derive(Debug)]
+#[derive(Debug, defmt::Format)]
 pub struct JoinResponse {
     pub connected: bool,
     pub got_ip: bool,

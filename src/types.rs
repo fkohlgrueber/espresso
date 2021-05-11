@@ -1,7 +1,7 @@
 //! Shared types.
 
 /// The WiFi mode.
-#[derive(Debug)]
+#[derive(Debug, defmt::Format)]
 pub enum WifiMode {
     /// Station mode (client)
     Station,
@@ -30,7 +30,7 @@ pub struct ConfigWithDefault<T> {
 }
 
 /// The connection status.
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, defmt::Format)]
 pub enum ConnectionStatus {
     /// The ESP8266 Station is connected to an AP and its IP is obtained
     ConnectedToAccessPoint,
@@ -45,7 +45,7 @@ pub enum ConnectionStatus {
 }
 
 /// The ESP8266 can manage up to five parallel connections with id 0..4.
-#[derive(Debug)]
+#[derive(Debug, defmt::Format)]
 pub enum ConnectionId {
     Zero,
     One,
@@ -68,14 +68,14 @@ impl ConnectionId {
 
 /// The ESP8266 can either run in single-connection mode (`NonMultiplexed`) or
 /// in multi-connection mode (`Multiplexed`).
-#[derive(Debug)]
+#[derive(Debug, defmt::Format)]
 pub enum MultiplexingType {
     NonMultiplexed,
     Multiplexed(ConnectionId),
 }
 
 /// The connection protocol.
-#[derive(Debug)]
+#[derive(Debug, defmt::Format)]
 pub enum Protocol {
     Tcp,
     Udp,
